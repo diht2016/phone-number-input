@@ -1,0 +1,44 @@
+.phone-number-component {
+    font-family: monospace;
+    font-size: 1.5em;
+    padding: 0.5em;
+}
+
+.phone-number-box {
+    padding: 0.3em;
+    margin: 0.1em;
+    border-radius: 0.2em;
+    color: #000;
+    background: #fff;
+    width: 0.6em;
+    border: 1px solid #e0e0e0;
+}
+span.phone-number-box {
+    border-color: #eee;
+    background: #eee;
+    display: inline-block;
+    box-sizing: content-box;
+}
+input.phone-number-box {
+    font-size: 1em;
+    font-family: monospace;
+}
+input.phone-number-box:hover {
+    border-color: #bbb;
+}
+input.phone-number-box:focus {
+    outline: none;
+    border-color: #888;
+}
+
+.phone-number-error-message {
+    display: none;
+    color: #f10;
+    font-size: 0.7em;
+}
+.phone-number-component.phone-number-error-state > .phone-number-error-message {
+    display: block;
+}
+.phone-number-component.phone-number-error-state > input.phone-number-box {
+    border-color: #f10;
+}

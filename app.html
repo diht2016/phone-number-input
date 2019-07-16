@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Testing App</title>
+
+        <link rel="stylesheet" href="phone-number.css">
+        <script src="phone-number.js"></script>
+
+        <style>
+            #mask-input, button {
+                font-family: monospace;
+            }
+            #content {
+                margin: 1em;
+                border: 1px dashed #aaa;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Testing App</h1>
+        <label>Phone number mask: <input id="mask-input" value="+7(985)0II-**-**" oninput="recreateComponent()"></label>
+        <button onclick="maskInput.value = '+7 (III) III-II-II'; recreateComponent()">Try "+7 (III) III-II-II"</button>
+        <br><br>
+
+        Component:
+        <div id="content"></div>
+
+        <script>
+            let main = document.getElementById('content')
+            let maskInput = document.getElementById('mask-input')
+            let component = null
+
+            function recreateComponent() {
+                let params = { mask: maskInput.value }
+                component = createPhoneNumberComponent(params)
+                
+                main.innerHTML = ''
+                main.appendChild(component)
+            }
+
+            recreateComponent()
+        </script>
+
+        <br><br>
+        <button onclick="component.setErrorState()">Set error state</button>
+        <button onclick="component.setErrorState(false)">Clear error state</button>
+        <br><br>
+        <button onclick="alert(component.getInputValue())">Get input value</button>
+        <button onclick="alert(component.getFullValue())">Get full value</button>
+
+    </body>
+</html>
