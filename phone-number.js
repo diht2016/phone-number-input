@@ -19,13 +19,12 @@ function createPhoneNumberComponent(params) {
     function changeActiveIndex(input, offset) {
         let inputs = input.parentNode.getInputs()
         let newIndex = inputs.indexOf(input) + offset
+		let newInput = input
         if (inputs[newIndex]) {
-            inputs[newIndex].focus()
-            return inputs[newIndex]
-        } else {
-            input.blur()
-            return null
+			newInput = inputs[newIndex]
+			newInput.focus()
         }
+		return newInput
     }
     
     function processKeydown(event) {
