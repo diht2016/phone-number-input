@@ -31,6 +31,7 @@
             let main = document.getElementById('content')
             window.maskInput = document.getElementById('mask-input')
             window.component = null
+            window.recreateComponent = recreateComponent
 
             function recreateComponent() {
                 let params = { mask: window.maskInput.value }
