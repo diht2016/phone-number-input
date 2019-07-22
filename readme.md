@@ -8,14 +8,17 @@
 <head>
     ...
     <link rel="stylesheet" href="phone-number.css">
-    <script src="phone-number.js"></script>
+    <script type="module">
+        import phoneNumberComponentFactory from 'phone-number.js'
+        ...
+    </script>
     ...
 </head>
 ```
 
 ## Пример использования
 ```js
-let component = createPhoneNumberComponent({
+let component = phoneNumberComponentFactory({
     // маска телефонного номера, смотрите описание ниже
     mask: '+7(985)0II-**-**',
     // текст для ошибки (если не указан, то используется текст по умолчанию, указанный здесь)
@@ -27,7 +30,7 @@ someButton.onclick = () => {
 }
 ```
 
-[Тестовый пример страницы с использованием этого компонента](app.html)
+[Тестовый пример страницы с использованием этого компонента](test-html-app/index.html)
 
 Маска телефонного номера может содержать следующие символы:
 * `I` - односимвольное поле для ввода одной цифры

@@ -1,10 +1,10 @@
-function createPhoneNumberComponent(params) {
+export default function phoneNumberComponentFactory(params) {
     const defaultErrorText = 'Неверный номер, попробуйте ещё раз'
 
 
     let root = document.createElement('div')
     if (typeof params.mask != 'string') {
-        throw new ValueError('params.mask must be of string type')
+        throw new TypeError('params.mask must be of string type')
     }
     for (let c of params.mask) {
         root.appendChild(maskCharToElement(c))
@@ -19,12 +19,12 @@ function createPhoneNumberComponent(params) {
     function changeActiveIndex(input, offset) {
         let inputs = input.parentNode.getInputs()
         let newIndex = inputs.indexOf(input) + offset
-		let newInput = input
+        let newInput = input
         if (inputs[newIndex]) {
-			newInput = inputs[newIndex]
-			newInput.focus()
+            newInput = inputs[newIndex]
+            newInput.focus()
         }
-		return newInput
+        return newInput
     }
     
     function processKeydown(event) {
@@ -70,12 +70,12 @@ function createPhoneNumberComponent(params) {
             input.type = 'text'
             input.size = 1
             input.placeholder = '_'
-            input.pattern = '\d'
+            input.pattern = '\\d'
             input.className = 'phone-number-box'
             addInputListeners(input)
             return input
         }
-        if (c.match(/\d|X|\*/)) {
+        if (c.match(/[\dX*]/)) {
             let box = document.createElement('span')
             box.textContent = c == '*' ? '●' : c
             box.className = 'phone-number-box'

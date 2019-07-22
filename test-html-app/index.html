@@ -4,9 +4,6 @@
         <meta charset="utf-8">
         <title>Testing App</title>
 
-        <link rel="stylesheet" href="phone-number.css">
-        <script src="phone-number.js"></script>
-
         <style>
             #mask-input, button {
                 font-family: monospace;
@@ -27,14 +24,17 @@
         Component:
         <div id="content"></div>
 
-        <script>
+        <link rel="stylesheet" href="../src/phone-number.css">
+        <script type="module">
+            import phoneNumberComponentFactory from '../src/phone-number.js'
+            
             let main = document.getElementById('content')
             let maskInput = document.getElementById('mask-input')
             let component = null
 
             function recreateComponent() {
                 let params = { mask: maskInput.value }
-                component = createPhoneNumberComponent(params)
+                component = phoneNumberComponentFactory(params)
                 
                 main.innerHTML = ''
                 main.appendChild(component)
