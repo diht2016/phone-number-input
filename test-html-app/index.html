@@ -29,15 +29,15 @@
             import phoneNumberComponentFactory from '../src/phone-number.js'
             
             let main = document.getElementById('content')
-            let maskInput = document.getElementById('mask-input')
-            let component = null
+            window.maskInput = document.getElementById('mask-input')
+            window.component = null
 
             function recreateComponent() {
-                let params = { mask: maskInput.value }
-                component = phoneNumberComponentFactory(params)
+                let params = { mask: window.maskInput.value }
+                window.component = phoneNumberComponentFactory(params)
                 
                 main.innerHTML = ''
-                main.appendChild(component)
+                main.appendChild(window.component)
             }
 
             recreateComponent()
